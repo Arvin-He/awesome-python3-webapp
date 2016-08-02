@@ -1,15 +1,16 @@
-# /usr/bin/python3
+# /usr/bin/env python3
 # *-* coding:utf-8 *-*
 
 import logging; logging.basicConfig(level=logging.INFO)
 
 import asyncio, os, json, time
 from datetime import datetime
-
+import aiomysql
 from aiohttp import web
 
 def index(request):
     return web.Response(body=b'<h1>Awesome</h>')
+
 
 @asyncio.coroutine
 def init(loop):
@@ -22,5 +23,6 @@ def init(loop):
 loop = asyncio.get_event_loop()
 loop.run_until_complete(init(loop))
 loop.run_forever()
+
 
 
